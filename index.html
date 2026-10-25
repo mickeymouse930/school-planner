@@ -1,1 +1,76 @@
 
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <title>School Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div>
+        <p class="eyebrow">MY SCHOOL LIFE</p>
+        <h1>School Planner</h1>
+      </div>
+      <button class="icon-button" aria-label="通知">🔔</button>
+    </header>
+
+    <main>
+      <section class="welcome">
+        <h2>こんにちは！</h2>
+        <p>今日も学校生活を計画しよう。</p>
+      </section>
+
+      <section class="calendar-card">
+        <div class="section-heading">
+          <h2 id="monthTitle">カレンダー</h2>
+          <div class="calendar-controls">
+            <button id="prevMonth" aria-label="前の月">‹</button>
+            <button id="nextMonth" aria-label="次の月">›</button>
+          </div>
+        </div>
+        <div class="weekdays">
+          <span>日</span><span>月</span><span>火</span>
+          <span>水</span><span>木</span><span>金</span><span>土</span>
+        </div>
+        <div id="calendarDays" class="calendar-days"></div>
+      </section>
+
+      <section class="tasks-section">
+        <div class="section-heading">
+          <h2>予定・課題</h2>
+          <button id="addTask" class="add-button">＋ 追加</button>
+        </div>
+        <p id="selectedDate" class="date-label"></p>
+        <div id="taskList" class="task-list">
+          <p class="empty-message">予定はまだありません。</p>
+        </div>
+      </section>
+
+      <section class="shortcuts">
+        <h2>学校生活の管理</h2>
+        <div class="shortcut-grid">
+          <button class="shortcut" data-category="レポート"><span>📚</span>レポート</button>
+          <button class="shortcut" data-category="視聴表"><span>▶️</span>視聴表</button>
+          <button class="shortcut" data-category="スクーリング"><span>🏫</span>スクーリング</button>
+          <button class="shortcut" data-category="テスト"><span>📝</span>テスト</button>
+          <button class="shortcut" data-category="特別活動"><span>⭐</span>特別活動</button>
+          <button class="shortcut" data-category="塾"><span>✏️</span>塾</button>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="メインメニュー">
+      <button class="nav-item active">🏠<span>ホーム</span></button>
+      <button class="nav-item">📅<span>カレンダー</span></button>
+      <button class="nav-item">📋<span>課題</span></button>
+      <button class="nav-item">⚙️<span>設定</span></button>
+    </nav>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+  
