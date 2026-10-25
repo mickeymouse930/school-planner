@@ -40,6 +40,47 @@
           </p>
         </div>
       </section>
+      
+<section id="reportFormSection" class="calendar-card" hidden>
+  <h2>新しいレポート</h2>
+
+  <form id="reportForm">
+    <p>
+      <label for="reportSubject">教科</label>
+      <input
+        id="reportSubject"
+        type="text"
+        placeholder="例：国語"
+        required
+      >
+    </p>
+
+    <p>
+      <label for="reportNumber">レポート番号</label>
+      <input
+        id="reportNumber"
+        type="text"
+        placeholder="例：No.1"
+        required
+      >
+    </p>
+
+    <p>
+      <label for="reportDeadline">提出期限</label>
+      <input
+        id="reportDeadline"
+        type="date"
+        required
+      >
+    </p>
+
+    <button type="submit">レポートを保存</button>
+    <button type="button" id="cancelReport">
+      キャンセル
+    </button>
+  </form>
+</section>
+
     </main>
 
     <nav class="bottom-nav" aria-label="メインメニュー">
