@@ -1,1 +1,59 @@
 
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#3978d8">
+  <title>レポート管理 | School Planner</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div>
+        <p class="eyebrow">SCHOOL PLANNER</p>
+        <h1>レポート管理</h1>
+      </div>
+      <a href="./" class="add-button">
+        ホームへ
+      </a>
+    </header>
+
+    <main>
+      <section class="welcome">
+        <h2>レポート一覧</h2>
+        <p>提出期限や提出状況を管理しよう。</p>
+      </section>
+
+      <section class="calendar-card">
+        <div class="section-heading">
+          <h2>登録済みレポート</h2>
+          <button id="addReport" class="add-button">
+            ＋ 追加
+          </button>
+        </div>
+
+        <div id="reportList" class="task-list">
+          <p class="empty-message">
+            レポートはまだ登録されていません。
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="メインメニュー">
+      <a href="./" class="nav-item">
+        🏠<span>ホーム</span>
+      </a>
+      <a href="reports.html" class="nav-item active">
+        📚<span>レポート</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="reports.js"></script>
+</body>
+</html>
+
