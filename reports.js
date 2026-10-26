@@ -3,6 +3,13 @@ const STORAGE_KEY = "schoolPlannerReports";
 
 const reportList = document.getElementById("reportList");
 const addReportButton = document.getElementById("addReport");
+const formSection = document.getElementById("reportFormSection");
+const reportForm = document.getElementById("reportForm");
+const cancelButton = document.getElementById("cancelReport");
+
+const subjectInput = document.getElementById("reportSubject");
+const numberInput = document.getElementById("reportNumber");
+const deadlineInput = document.getElementById("reportDeadline");
 
 let reports = [];
 
@@ -76,28 +83,41 @@ function renderReports() {
   });
 }
 
+// 「＋追加」でフォームを表示
 addReportButton.addEventListener("click", () => {
-  const subject = prompt("教科を入力してください（例：国語）");
-  if (subject === null || !subject.trim()) return;
+  formSection.hidden = false;
+  subjectInput.focus();
+});
 
-  const number = prompt("レポート番号を入力してください（例：No.1）");
-  if (number === null || !number.trim()) return;
+// キャンセルでフォームを閉じる
+cancelButton.addEventListener("click", () => {
+  reportForm.reset();
+  formSection.hidden = true;
+});
 
-  const deadline = prompt("提出期限を入力してください（例：2026-11-10）");
-  if (deadline === null || !deadline.trim()) return;
+// フォームの内容を保存
+reportForm.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-  const report = {
+  const subject = subjectInput.value.trim();
+  const number = numberInput.value.trim();
+  const deadline = deadlineInput.value;
+
+  if (!subject || !number || !deadline) return;
+
+  reports.push({
     id: crypto.randomUUID(),
-    subject: subject.trim(),
-    number: number.trim(),
-    deadline: deadline.trim(),
+    subject,
+    number,
+    deadline,
     submitted: false
-  };
+  });
 
-  reports.push(report);
   saveReports();
   renderReports();
+
+  reportForm.reset();
+  formSection.hidden = true;
 });
 
 renderReports();
-
