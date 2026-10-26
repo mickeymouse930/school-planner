@@ -24,6 +24,24 @@ function saveReports() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(reports));
 }
 
+function sortReportsByDeadline(items) {
+  return [...items].sort((a, b) => {
+    // 提出済みのレポートは下に表示
+    const aDone = a.completed ?? a.submitted ?? false;
+    const bDone = b.completed ?? b.submitted ?? false;
+
+    if (aDone !== bDone) {
+      return aDone ? 1 : -1;
+    }
+
+    // 提出期限が早い順に表示
+    const aDate = a.deadline || "9999-12-31";
+    const bDate = b.deadline || "9999-12-31";
+
+    return aDate.localeCompare(bDate);
+  });
+}
+
 function renderReports() {
   reportList.replaceChildren();
 
@@ -34,7 +52,8 @@ function renderReports() {
     return;
   }
 
-  reports.forEach((report) => {
+  
+sortReportsByDeadline(reports).forEach((report) => {
     const card = document.createElement("div");
     card.className = "task-item";
     card.style.padding = "16px";
