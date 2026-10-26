@@ -1,4 +1,4 @@
-const CACHE_NAME = "school-planner-v3";
+const CACHE_NAME = "school-planner-v4";
 
 const FILES_TO_CACHE = [
   
