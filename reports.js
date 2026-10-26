@@ -42,6 +42,8 @@ function sortReportsByDeadline(items) {
   });
 }
 
+let editingReportId = null;
+
 function renderReports() {
   reportList.replaceChildren();
 
@@ -118,6 +120,22 @@ status.style.fontWeight = "600";
       renderReports();
     });
 
+    const editButton = document.createElement("button");
+    editButton.textContent = "編集";
+    editButton.style.marginLeft = "12px";
+
+    editButton.addEventListener("click", () => {
+    
+    editingReportId = report.id;
+
+    subjectInput.value = report.subject;
+    numberInput.value = report.number;
+    deadlineInput.value = report.deadline;
+
+    formSection.hidden = false;
+    subjectInput.focus();
+  });
+
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "削除";
     deleteButton.style.marginLeft = "12px";
@@ -130,9 +148,10 @@ status.style.fontWeight = "600";
       renderReports();
     });
 
-    card.append(title, deadline, status, toggleButton, deleteButton);
-    reportList.appendChild(card);
-  });
+    
+card.append(title, deadline, status, toggleButton, editButton, deleteButton
+});
+
 }
 
 // 「＋追加」でフォームを表示
@@ -157,6 +176,22 @@ reportForm.addEventListener("submit", (event) => {
 
   if (!subject || !number || !deadline) return;
 
+  
+if (editingReportId !== null) {
+  // 編集中のレポートを更新
+  const report = reports.find(
+    (item) => item.id === editingReportId
+  );
+
+  if (report) {
+    report.subject = subject;
+    report.number = number;
+    report.deadline = deadline;
+  }
+
+  editingReportId = null;
+} else {
+  // 新しいレポートを登録
   reports.push({
     id: crypto.randomUUID(),
     subject,
@@ -164,6 +199,8 @@ reportForm.addEventListener("submit", (event) => {
     deadline,
     submitted: false
   });
+}
+
 
   saveReports();
   renderReports();
