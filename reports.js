@@ -69,10 +69,43 @@ sortReportsByDeadline(reports).forEach((report) => {
     deadline.textContent = `提出期限：${report.deadline}`;
     deadline.style.margin = "0 0 8px";
 
-    const status = document.createElement("p");
-    status.textContent = report.submitted
-      ? "✅ 提出済み"
-      : "⏳ 未提出";
+    
+const status = document.createElement("p");
+
+// 今日の日付を取得
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
+// 提出期限までの日数を計算
+const [year, month, day] = report.deadline
+  .split("-")
+  .map(Number);
+
+const dueDate = new Date(year, month - 1, day);
+const daysLeft = Math.round(
+  (dueDate - today) / (1000 * 60 * 60 * 24)
+);
+
+// 提出状況と期限に応じて表示を変更
+if (report.submitted) {
+  status.textContent = "✅ 提出済み";
+  status.style.color = "#16803c";
+} else if (daysLeft < 0) {
+  status.textContent = "🔴 期限切れ";
+  status.style.color = "#dc2626";
+} else if (daysLeft === 0) {
+  status.textContent = "🟠 今日が提出期限";
+  status.style.color = "#c2410c";
+} else if (daysLeft <= 3) {
+  status.textContent = `🟠 あと${daysLeft}日`;
+  status.style.color = "#c2410c";
+} else {
+  status.textContent = `⏳ あと${daysLeft}日`;
+  status.style.color = "#475569";
+}
+
+status.style.fontWeight = "600";
+
 
     const toggleButton = document.createElement("button");
     toggleButton.textContent = report.submitted
