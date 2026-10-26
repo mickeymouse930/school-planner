@@ -1,4 +1,3 @@
-
 :root {
   font-family: Arial, "Noto Sans JP", sans-serif;
   color: #25324a;
@@ -288,4 +287,72 @@ h2 {
     padding-top: 35px;
   }
 }
+
+/* レポート入力フォーム */
+#reportFormSection {
+  margin-top: 20px;
+}
+
+#reportFormSection[hidden] {
+  display: none !important;
+}
+
+#reportForm {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 20px;
+}
+
+#reportForm p {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+}
+
+#reportForm label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+}
+
+#reportForm input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px;
+  border: 1px solid #d6e1f0;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #1e293b;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+#reportForm input:focus {
+  outline: 2px solid #3978d8;
+  outline-offset: 2px;
+  border-color: #3978d8;
+}
+
+#reportForm button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#reportForm button[type="submit"] {
+  background: #3978d8;
+  color: white;
+}
+
+#cancelReport {
+  background: #edf2fa;
+  color: #334155;
+}
+
 
